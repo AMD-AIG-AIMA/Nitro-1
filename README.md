@@ -10,6 +10,10 @@
 ---
 ![combined_image_1x4](https://github.com/user-attachments/assets/4f55cfac-b24f-4963-bd74-7421db26ed56)
 
+## News
+* (🔥 New) [2025/07/09] We released [Nitro-T](https://github.com/AMD-AIG-AIMA/Nitro-T) demonstrating hyper-efficient training of a text-to-image diffusion model _from scratch in less than 1 day!_ Check out our [technical blog post](https://rocm.blogs.amd.com/artificial-intelligence/nitro-t-diffusion/README.html), [full training code](https://github.com/AMD-AIG-AIMA/Nitro-T) and models on HuggingFace: [Nitro-T-1.2B](https://huggingface.co/amd/Nitro-T-1.2B), [Nitro-T-0.6B](https://huggingface.co/amd/Nitro-T-0.6B).
+
+---
 
 This repository provides training recipes for the AMD Nitro-1 models, a series of efficient text-to-image generation models that are distilled from popular diffusion models on AMD Instinct GPUs.
 
