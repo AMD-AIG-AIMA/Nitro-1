@@ -195,12 +195,14 @@ elif args.base_model in ['PixArt-alpha/PixArt-Sigma-XL-2-1024-MS',
     transformer = PixArtTransformer2DModel.from_pretrained(
     args.base_model, 
     subfolder='transformer', 
+    torch_dtype=torch.bfloat16,
     use_safetensors=True,
 )
     pipe = PixArtSigmaPipeline.from_pretrained(
     'PixArt-alpha/PixArt-Sigma-XL-2-1024-MS',
     transformer=transformer,
     use_safetensors=True,
+    torch_dtype=torch.bfloat16,
     )
 
     def encoding_func(prompt):
@@ -240,7 +242,7 @@ for i in range(len(anno_list)):
     os.makedirs(lock_path, exist_ok=True)
     print('Generating sample %d/%d' % (i, num_samples))
     torch.manual_seed(i) # make the results different if we encounter same prompts
-    noise = torch.randn((1, args.noise_c, args.noise_size, args.noise_size))
+    noise = torch.randn((1, args.noise_c, args.noise_size, args.noise_size), dtype=pipe.dtype, device="cuda")
     output = pipe(prompt=prompt, guidance_scale=args.cfg, latents=noise.cuda(), output_type=args.output_type,
                     num_inference_steps=args.num_inference_steps).images
     emb_info = encoding_func(prompt)

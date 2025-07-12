@@ -21,7 +21,9 @@ for gpu in "${available_gpus[@]}"; do
 CUDA_VISIBLE_DEVICES=${gpu} python core/tools/gen_synthetic_data.py \
                             --prompt_path $PROMPT_PATH \
                             --root_folder $OUT_FOLDER \
-                            --base_model $MODEL_ID &
+                            --base_model $MODEL_ID \
+                            --num_inference_steps 20 \
+                            --noise_size 128 &
 done
 wait
 
